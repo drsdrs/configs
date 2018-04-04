@@ -1,4 +1,5 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# 123
 
 set $mod Mod4
 
@@ -149,21 +150,21 @@ bar {
 }
 
 
-exec_always --no-startup-id ~/.screenlayout/2-screen-workmode.sh
+exec_always --no-startup-id scripts/2-screen-workmode.sh
+
 exec_always --no-startup-id setxkbmap -layout de -option caps:none
 
-exec --no-startup-id chromium
+exec --no-startup-id google-chrome-stable
 exec --no-startup-id thunderbird
 exec --no-startup-id quassel
 
 # USER KEY EVENTS
 
-bindsym $mod+Delete exec sudo -u drs -E pacmd set-card-profile alsa_card.pci-0000_00_1b.0 output:analog-stereo
-bindsym $mod+End exec sudo -u drs -E pacmd set-card-profile alsa_card.pci-0000_01_00.1 output:hdmi-stereo-extra1
+bindsym $mod+End exec scripts/switchAudio.sh
 
-bindsym $mod+Insert exec ~/.screenlayout/1-screen-chillmode.sh
-bindsym $mod+Home exec ~/.screenlayout/2-screen-workmode.sh
-bindsym $mod+Prior exec ~/.screenlayout/3-screen.layout.sh
+bindsym $mod+Insert exec scripts/1-screen-chillmode.sh
+bindsym $mod+Home exec scripts/2-screen-workmode.sh
+bindsym $mod+Prior exec scripts/3-screen.layout.sh
 
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
